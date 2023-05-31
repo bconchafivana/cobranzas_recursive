@@ -8,8 +8,7 @@ import numpy as np
 logging.basicConfig()
 logger = logging.getLogger(__name__)
 
-print(df_concats_new_executive.columns)
-print(df_concats_new_executive.shape)
+
 df_concats_new_executive.replace({pd.NaT: None}, inplace=True)
 class PGAuroraRepository:
     def __init__(self, c_str, df ,  *args, **kwargs ):
@@ -85,10 +84,10 @@ class PGAuroraRepository:
         }
         return directions
 
-    
+print('uploader working')
 #aurora_repo = PGAuroraRepository(c_str=connection_string , df = df_concats_new_executive)
 aurora_repo = PGAuroraRepository(c_str='postgresql://postgres:9QqnUdZvr6zWz4W@pg-aurora-serverless.cluster-cyzwrcs8gffc.us-east-1.rds.amazonaws.com/FIVANA_DB', df = df_concats_new_executive)
-
+print("uploader connected to aurora")
 #aurora_repo.sort_fields_map = aurora_repo.__map_sort_fields(df_concats_new_executive)
 result = aurora_repo.register_ruts()
-#print(result)
+print('uploader done')

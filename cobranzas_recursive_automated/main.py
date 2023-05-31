@@ -31,9 +31,12 @@ df_concats = branches_down(complete_branches, data)
 executive_with_document = reassign_normalization_executive(complete_branches_with_data)
 
 df_concats_new_executive = pd.merge(df_concats, executive_with_document, left_on = 'document_id', right_on = 'document_id')
+df_concats_new_executive['last_actualization'] = pd.Timestamp('now')
+
 
 c_o1 = pd.merge(cartera_original, data.add_prefix('car_'), left_on = 'document_id_1', right_on = 'car_document_id', how = 'left')
 c_19 = pd.merge(c_o1, data.add_prefix('ori_'), left_on = 'document_id_9', right_on = 'ori_document_id', how = 'left')
 
-print(df_concats_new_executive.columns)
-print(df_concats_new_executive.shape)
+print("main_done")
+#print(df_concats_new_executive.columns)
+#print(df_concats_new_executive.shape)
